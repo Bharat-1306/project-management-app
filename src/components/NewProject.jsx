@@ -1,11 +1,11 @@
 import Input from "./Input.jsx";
 import { useRef } from "react";
 import Modal from "./Modal.jsx";
-export default function NewProject({ onAddNewProject , onCancelProject}) {
+export default function NewProject({ onAddNewProject, onCancelProject }) {
   const title = useRef();
   const description = useRef();
   const dueDate = useRef();
-  const modal = useRef()
+  const modal = useRef();
 
   function handleSave() {
     const enteredTitle = title.current.value;
@@ -19,29 +19,34 @@ export default function NewProject({ onAddNewProject , onCancelProject}) {
     ) {
       //show the error modal
       modal.current.open();
-    //   return;
+      //   return;
     } else {
-        onAddNewProject({
-            title: enteredTitle,
-            description: enteredDescription,
-            dueDate: enteredDueDate,
-          });
+      onAddNewProject({
+        title: enteredTitle,
+        description: enteredDescription,
+        dueDate: enteredDueDate,
+      });
     }
-
-   
   }
 
   return (
     <>
       <Modal ref={modal}>
         <h2 className="text-xl font-bold text-stone-500 my-4">Invalid Input</h2>
-        <p className="text-stone-400 mb-4">Oops... looks like you forgot to enter a value.</p>
-        <p className="text-stone-400 mb-4">please make sure you provide a valid value for every input field.</p>
+        <p className="text-stone-400 mb-4">
+          Oops... looks like you forgot to enter a value.
+        </p>
+        <p className="text-stone-400 mb-4">
+          please make sure you provide a valid value for every input field.
+        </p>
       </Modal>
       <div className="w-[35rem] mt-16">
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
-            <button className="text-stone-800 hover:text-stone-950" onClick={onCancelProject}>
+            <button
+              className="text-stone-800 hover:text-stone-950"
+              onClick={onCancelProject}
+            >
               Cancel
             </button>
           </li>
